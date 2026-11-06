@@ -1,0 +1,15 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: lifecycle-service
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+
+saberpro:
+  events:
+    exchange: saberpro.question.events
+    queue: lifecycle.question.review.queue
+    routing-key: question.event.submit

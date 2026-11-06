@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: question-service
+  datasource:
+    url: jdbc:h2:mem:saberpro_db;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+
+saberpro:
+  services:
+    validation-url: http://localhost:8081/api/v1/validation/evaluate
+  events:
+    exchange: saberpro.question.events
+    routing-key: question.event.submit
